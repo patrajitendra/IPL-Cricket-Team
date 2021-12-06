@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+
+
+{%block content%}
+<style>
+    .header{
+        text-decoration: underline;
+        border-bottom: 2px solid black;
+        background-color: blue;
+    }
+</style>
+
+<div class="container  mt-4">
+    <h2>Team : {{result}}</h2>
+    <table class='table'>
+        <tr>
+            <th class='header'>Name</th>
+            <th class='header'>Photo</th>
+            <th class='header'>Role</th>
+        </tr>
+        {%for i in data %}
+        <tr>
+            <th>{{i.fullname}}</th>
+            <th><img src="{{i.photo.url}}" width="100px" height="100px"></th>
+            <th>{{i.role}}</th>
+        </tr>
+        {%endfor%}
+    </table>
+
+</div>
+
+
+{%endblock%}

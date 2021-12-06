@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags%}
+
+
+{%block content%}
+<style>
+    .asteriskField{
+        color: red;
+    }
+
+</style>
+<div class="container">
+    <h4 style="text-align: center;color: blue;font-size: 30px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Add Team</h4>
+
+    <div style="margin: 80px;border: 2px solid rgb(37, 112, 182);">
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="row">
+                <div class="col-md-2">
+                    
+                </div>
+                <div class="col-md-4">
+                    {{form.name|as_crispy_field}}
+
+                </div>
+                <div class="col-md-4">
+                    {{form.icon|as_crispy_field}}
+
+                </div>
+
+            </div>
+            <div style="text-align: center;" class="mt-5">
+            <button type="submit" class="btn btn-primary">
+                Add
+            </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{%endblock%}

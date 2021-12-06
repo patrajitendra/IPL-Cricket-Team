@@ -1,0 +1,95 @@
+{%extends 'base.html'%}
+
+
+
+{% block content %}
+<style>
+    .t{
+        font-size: 25px;
+        color: blue;
+        font-family: 'Courier New', Courier, monospace;
+        border:  solid black;
+         padding: 5px;
+         text-align: center;
+    
+
+    }
+</style>
+
+<div class='container'>
+  <h4><a href="{% url 'add_player'%}" style="text-decoration: none;color: red;"><button class="btn btn-primary">Add Player</button></a><h4>
+    <p style="font-size: 30px;color: red;">No. of Players:{{d.count}}</p>
+    <h4>Top Batsman</h4>
+      <table class="table ">
+          <tr>
+              <th class="t">Name</th>
+              <th class="t">Price</th>
+              <th class="t">Status</th>
+              <th class="t">Role</th>
+              <th class="t">Photo</th>
+          </tr>
+          {%for i in d%}
+          {%if i.role == 'Batsman'%}
+          <tr>
+            <th style="text-align: center;">{{i.fullname}}</th>
+            <th style="text-align: center;">{{i.price}}</th>
+            {%if i.is_playing == 1%}
+            <th style="text-align: center;">playing</th>
+            {%else%}
+            <th>On-Bench</th>
+            {%endif%}
+            <th style="text-align: center;">{{i.role}}</th>
+            <th style="text-align: center;"><img src="{{i.photo.url}}" width="100px" height="100px"></th>
+          </tr>
+          {%endif%}
+          {%endfor%}
+      </table>
+</div>
+
+<div class='container'>
+    <h4>Top Bowler</h4>
+    <table class="table">
+        
+        {%for i in d%}
+        {%if i.role == 'Bowler'%}
+        <tr>
+          <th>{{i.fullname}}</th>
+          <th>{{i.price}}</th>
+          {%if i.is_playing == 1%}
+          <th>playing</th>
+          {%else%}
+          <th>On-Bench</th>
+          {%endif%}
+          <th>{{i.role}}</th>
+          <th style="text-align: center;"><img src="{{i.photo.url}}" width="100px" height="100px"></th>
+        </tr>
+        {%endif%}
+        {%endfor%}
+    </table>
+
+    <div class='container'>
+        <h4>All Rounder</h4>
+        <table class="table">
+            
+            {%for i in d%}
+            {%if i.role == 'All-Rounder'%}
+            <tr>
+              <th>{{i.fullname}}</th>
+              <th>{{i.price}}</th>
+              {%if i.is_playing == 1%}
+              <th>playing</th>
+              {%else%}
+              <th>On-Bench</th>
+              {%endif%}
+              <th>{{i.role}}</th>
+              <th style="text-align: center;"><img src="{{i.photo.url}}" width="100px" height="100px"></th>
+            </tr>
+            {%endif%}
+            {%endfor%}
+        </table>
+    
+    
+
+
+
+{%endblock%}
